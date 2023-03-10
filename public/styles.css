@@ -1,10 +1,13 @@
 .content {
   max-width: 80%;
-  margin: auto;
-  text-align: center;
 }
 
 .header {
+  text-align: center;
+  margin: auto;
+}
+
+.nav-list {
   text-align: center;
 }
 
@@ -12,13 +15,30 @@
   text-align: center;
 }
 
+.game-title {
+  padding: 10px;
+}
+
 .game-info {
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .game-box-art {
-  width: 10%;
+  max-width: 70%;
   height: auto;
+  float: right;
+  padding-right: 10px;
+}
+
+.game-description {
+  float: left;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.info-piece {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 ul {

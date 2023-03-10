@@ -1,14 +1,26 @@
 <html lang="en">
 <%- include('./partials/head.ejs') %>
 <body>
-  <div class="content">
+  <div class="content container">
     <%- include('./partials/nav.ejs') %>
-    <h1>Sonic Frontiers</h1>
-    <div class="game-info">
-      <img src="/sonicFrontiers.jpg" alt="Sonic Frontiers" class="game-box-art">
-      <div class="game-description">
-        <h2>Game Summary</h2>
-        <p>Sonic Frontiers is the first open world Sonic the Hedgehog game. This story takes Sonic to the Starfall islands, where his friends are trapped in a digital cyber space, and he must save his friends and uncover the truth that took place thousands of years ago.</p>
+    <h2 class="game-title">Sonic Frontiers</h2>
+    <div class="game-info row align-items-start">
+      <div class="col">
+        <img src="/sonicFrontiers.jpg" alt="Sonic Frontiers" class="game-box-art">
+      </div>
+      <div class="game-description col">
+        <div class="info-piece">
+          <h3>Game Summary</h3>
+          <p>Sonic Frontiers is the first open world Sonic the Hedgehog game. This story takes Sonic to the Starfall islands, where his friends are trapped in a digital cyber space, and he must save his friends and uncover the truth that took place thousands of years ago.</p>
+        </div>
+        <div class="info-piece">
+          <h3>Publisher</h3>
+          <p>SEGA</p>
+        </div>
+        <div class="info-piece">
+          <h3>Year</h3>
+          <p>2022</p>
+        </div>
       </div>
     </div>
     
