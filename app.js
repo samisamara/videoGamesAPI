@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
 
-app.set('view engine', 'ejs');
+// connect to database
+const dbURI = "";
 
+// register view engine
+app.set('view engine', 'ejs');
 app.listen(3000);
 
+app.use(express.static("public"));
+
+// routes
 app.get('/', (req, res) => {
   res.render('index', { title: "Home" });
 });
