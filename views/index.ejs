@@ -1,6 +1,18 @@
 <html lang="en">
 <%- include('./partials/head.ejs') %>
 <body>
-  <h1>Hello World</h1>
+  <div class="content">
+      <%- include('./partials/nav.ejs') %>
+      
+    <div class="search-bar">
+      <form>
+        <input type="text" placeholder="Search a Game..." name="search" class="searchbar">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+  <%- include('./partials/footer.ejs') %>
 </body>
 </html>
