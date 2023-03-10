@@ -1,5 +1,6 @@
 .content {
   max-width: 80%;
+  margin: auto;
 }
 
 .header {
@@ -9,6 +10,7 @@
 
 .nav-list {
   text-align: center;
+  list-style-type: none;
 }
 
 .search-bar {
@@ -17,6 +19,7 @@
 
 .game-title {
   padding: 10px;
+  text-align: center;
 }
 
 .game-info {
@@ -39,10 +42,6 @@
 .info-piece {
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-ul {
-  list-style-type: none;
 }
 
 footer {

@@ -12,11 +12,6 @@ const client_secret = "ndwufpkw69w69wdd305caygwcr1v5x";
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-// post handler
-// app.post('/', (req, res) => {
-
-// })
-
 
 
 // register view engine
@@ -28,6 +23,15 @@ app.listen(3000);
 // routes
 app.get('/', (req, res) => {
   res.render('index', { title: "Home" });
+});
+
+app.get('/gameList', (req, res) => {
+  res.render('gameList', { title: "List of Games" })
+});
+
+// post handler
+app.post('/gameList', (req, res) => {
+  console.log(req.body);
 });
 
 app.get('/gameDetails', (req, res) => {
