@@ -44,6 +44,28 @@
   margin-bottom: 5px;
 }
 
+div.gameElement:nth-child(even) {
+  background: #CCC;
+}
+div.gameElement:nth-child(odd) { 
+  background: #EEE;
+}
+
+.element-image {
+  height: 10em;
+  width: auto;
+  display: inline-block;
+}
+
+.element-title {
+  display: inline-block;
+}
+
+.element-year {
+  display: inline-block;
+  color: blue;
+}
+
 footer {
   text-align: center;
 }

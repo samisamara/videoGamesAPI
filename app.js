@@ -32,6 +32,10 @@ app.get('/gameList', (req, res) => {
 // post handler
 app.post('/gameList', (req, res) => {
   console.log(req.body);
+  
+
+
+
 });
 
 app.get('/gameDetails', (req, res) => {
