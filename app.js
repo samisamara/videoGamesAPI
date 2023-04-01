@@ -1,4 +1,4 @@
-const { application } = require('express');
+const { application, response } = require('express');
 const express = require('express');
 const app = express();
 const axios = require("axios");
@@ -30,16 +30,15 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  res.render('index', { title: "Home" });
+  res.render('index', { title: "Home", games: "" });
 });
 
 app.post('/', (req, res) => {
   const searchterm = req.body.searchTerm;
-  console.log(searchterm);
-  console.log("before making the call")
+  console.log("We searched for: " + searchterm);
 
   axios({
-    url: `https://api.igdb.com/v4/games?fields=name&limit=50&search=${searchterm}`,
+    url: `https://api.igdb.com/v4/games?fields=name,summary,release_dates,platforms,cover&limit=50&search=${searchterm}`,
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -49,26 +48,27 @@ app.post('/', (req, res) => {
     data: "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;"
   })
     .then(response => {
-        console.log(response.data);
+        // console.log(response.data)
+
+        const collections = response.data;
+        
+        collections.forEach(collection => {
+          console.log(collection.name)
+          console.log(collection.cover)
+        })
+        
+        res.render('index', { title: "Home", searchterm: searchterm, games: collections })
     })
     .catch(err => {
         console.error(err);
     });
-    res.render('gameList', { title: "List of Games" })
-})
+});
 
 app.get('/gameList', (req, res) => {
   res.render('gameList', { title: "List of Games" })
 });
 
 // post handler
-app.post('/gameList', (req, res) => {
-  // console.log(req.body.searchTerm);
-  
-
-
-
-});
 
 app.get('/gameDetails', (req, res) => {
   res.render('gameDetails', { title: "Game Details" })

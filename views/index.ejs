@@ -10,6 +10,41 @@
         <button type="submit">Submit</button>
       </form>
     </div>
+
+    <% if (games.length > 0) { %>
+      <% games.forEach(game => { %>
+
+        <h4><%= game.name %></h4>
+        <img src="">
+
+      <% }) %>
+    <% } else { %>
+      <p>No games found</p>
+    <% } %>
+
+
+    <!-- <div class="list-of-games">
+      <div class="gameElement">
+        <h2 class="element-title">Sonic Frontiers</h2>
+        <h2 class="element-year">2022</h2>
+        <img src="/sonicFrontiers.jpg" alt="sonicFrontiers" class="element-image">
+      </div>
+      <div class="gameElement">
+        <h2 class="element-title">Sonic Frontiers</h2>
+        <h2 class="element-year">2022</h2>
+        <img src="/sonicFrontiers.jpg" alt="sonicFrontiers" class="element-image">
+      </div>
+      <div class="gameElement">
+        <h2 class="element-title">Sonic Frontiers</h2>
+        <h2 class="element-year">2022</h2>
+        <img src="/sonicFrontiers.jpg" alt="sonicFrontiers" class="element-image">
+      </div>
+      <div class="gameElement">
+        <h2 class="element-title">Sonic Frontiers</h2>
+        <h2 class="element-year">2022</h2>
+        <img src="/sonicFrontiers.jpg" alt="sonicFrontiers" class="element-image">
+      </div>
+    </div> -->
   </div>
 
 
