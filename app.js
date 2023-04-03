@@ -36,9 +36,8 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const searchterm = req.body.searchTerm;
   console.log("We searched for: " + searchterm);
-
   axios({
-    url: `https://api.igdb.com/v4/games?fields=name,summary,release_dates,platforms,cover&limit=50&search=${searchterm}`,
+    url: `https://api.igdb.com/v4/games?fields=id,name,summary,release_dates,platforms.name,cover.url,involved_companies.company.name,release_dates.date&limit=25&search=${searchterm}&where=cover.url!=null`,
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -48,16 +47,13 @@ app.post('/', (req, res) => {
     data: "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;"
   })
     .then(response => {
-        // console.log(response.data)
 
         const collections = response.data;
-        
         collections.forEach(collection => {
-          console.log(collection.name)
-          console.log(collection.cover)
-        })
+          collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
+        });
         
-        res.render('index', { title: "Home", searchterm: searchterm, games: collections })
+        res.render('index', { title: "Home", searchterm, games: collections })
     })
     .catch(err => {
         console.error(err);

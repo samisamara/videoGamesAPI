@@ -22,10 +22,6 @@
   text-align: center;
 }
 
-.game-info {
-  /* justify-content: center; */
-}
-
 .game-box-art {
   max-width: 70%;
   height: auto;
@@ -52,13 +48,16 @@ div.gameElement:nth-child(odd) {
 }
 
 .element-image {
-  height: 10em;
+  height: 12em;
   width: auto;
   display: inline-block;
 }
 
 .element-title {
   display: inline-block;
+  justify-content: center;
+  max-width: 250px;
+  margin-left: 100px;
 }
 
 .element-year {
