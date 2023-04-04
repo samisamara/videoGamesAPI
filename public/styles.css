@@ -48,8 +48,9 @@ div.gameElement:nth-child(odd) {
 }
 
 .element-image {
-  height: 12em;
-  width: auto;
+  /* height: 12em; */
+  height: auto;
+  width: 12em;
   display: inline-block;
 }
 

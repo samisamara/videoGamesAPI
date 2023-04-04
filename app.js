@@ -50,7 +50,7 @@ app.post('/', (req, res) => {
     .then(response => {
       const collections = response.data;
       collections.forEach(collection => {
-        collection.cover.url = collection.cover.url.replace('t_thumb', 't_cover_big');
+        collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
       });
         
       res.render('index', { title: "Home", searchterm, games: collections })
