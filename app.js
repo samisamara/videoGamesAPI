@@ -45,12 +45,12 @@ app.post('/', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,summary,release_dates,platforms.name,cover.url,involved_companies.company.name,release_dates.date; search "${searchterm}"; limit 50;`
+    data: `fields id,name,summary,release_dates,platforms.name,cover.url,involved_companies.company.name,release_dates.date; search "${searchterm}"; limit 50; where cover.url != null;`
   })
     .then(response => {
       const collections = response.data;
       collections.forEach(collection => {
-        collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
+        collection.cover.url = collection.cover.url.replace('t_thumb', 't_cover_big');
       });
         
       res.render('index', { title: "Home", searchterm, games: collections })
