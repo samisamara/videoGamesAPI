@@ -16,6 +16,8 @@
         <div class="gameElement" id="<%= game.id %>">
           <img src="<%=game.cover.url%>" alt="game" class="element-image">
           <h3 class="element-title"><%= game.name %></h3>
+          <h4 class="element-release-date"><%= releaseDates[0].human %></h4>
+          <% releaseDates.shift() %>
         </div>
 
       <% }) %>

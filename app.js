@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const searchterm = req.body.searchTerm;
   console.log("We searched for: " + searchterm);
+  const releaseDates = [];
   axios({
     url: 'https://api.igdb.com/v4/games',
     method: 'POST',
@@ -45,15 +46,21 @@ app.post('/', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,summary,release_dates,platforms.name,cover.url,involved_companies.company.name,release_dates.date; search "${searchterm}"; limit 50; where cover.url != null;`
+    data: `fields id,name,summary,release_dates.human,platforms.name,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null;`
   })
     .then(response => {
       const collections = response.data;
       collections.forEach(collection => {
         collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
+        console.log(collection.name);
+        const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
+        releaseDates.push(releaseDate);
+        console.log(releaseDate)
+        console.log(collection.release_dates?.[0]?.human);
       });
+      // console.log(releaseDates)
         
-      res.render('index', { title: "Home", searchterm, games: collections })
+      res.render('index', { title: "Home", searchterm, games: collections, releaseDates })
     })
     .catch(err => {
       console.error(err);

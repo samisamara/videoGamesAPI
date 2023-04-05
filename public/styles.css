@@ -61,6 +61,13 @@ div.gameElement:nth-child(odd) {
   margin-left: 100px;
 }
 
+.element-release-date {
+  display: inline-block;
+  justify-content: center;
+  max-width: 250px;
+  margin-left: 100px;
+}
+
 .element-year {
   display: inline-block;
   color: blue;
