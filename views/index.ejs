@@ -17,6 +17,7 @@
           <h3 class="element-image-title col-sm">Cover Art</h3>
           <h3 class="element-title col-sm">Name</h3>
           <h3 class="element-release-date col-sm">Release Date</h3>
+          <h3 class="element-release-date col-sm">Publisher</h3>
         </div>
         <% games.forEach(game => { %>
           <div class="gameElement row" id="<%= game.id %>">
@@ -24,6 +25,8 @@
             <h3 class="element-title col-sm"><%= game.name %></h3>
             <h4 class="element-release-date col-sm"><%= releaseDates[0].human %></h4>
             <% releaseDates.shift() %>
+            <h4 class="element-company col sm"><%= companies[0] %></h4>
+            <% companies.shift() %>
           </div>
         <% }) %>
       </div>

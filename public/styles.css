@@ -41,8 +41,9 @@
 }
 
 .container {
-
   justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 /* potential mobile styling
 .container {
@@ -53,6 +54,11 @@
 
 .list-header {
   background-color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 div.gameElement:nth-child(even) {
@@ -60,15 +66,6 @@ div.gameElement:nth-child(even) {
 }
 div.gameElement:nth-child(odd) { 
   background: #EEE;
-}
-
-.element-image {
-  /* height: auto; */
-  max-width: 300px;
-  display: inline-block;
-  padding: 0%;
-  width: 5em;
-  height: auto;
 }
 
 .element-image-title {
@@ -79,7 +76,32 @@ div.gameElement:nth-child(odd) {
   justify-content: center;
 }
 
+.element-image {
+  max-width: 300px;
+  display: inline-block;
+  padding: 0%;
+  width: 5em;
+  height: auto;
+  object-fit: cover;
+}
+
 .element-title {
+  display: inline-flex;
+  justify-content: center;
+  max-width: 250px;
+  align-items: center;
+  margin: auto;
+}
+
+.element-release-date {
+  display: inline-flex;
+  justify-content: center;
+  max-width: 250px;
+  align-items: center;
+  margin: auto;
+}
+
+.element-company {
   display: inline-flex;
   justify-content: center;
   max-width: 250px;
@@ -87,12 +109,12 @@ div.gameElement:nth-child(odd) {
   align-items: center;
 }
 
-.element-release-date {
+.element-company {
   display: inline-flex;
   justify-content: center;
   max-width: 250px;
-  margin-left: 100px;
   align-items: center;
+  margin: auto;
 }
 
 footer {
