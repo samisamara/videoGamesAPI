@@ -40,6 +40,21 @@
   margin-bottom: 5px;
 }
 
+.container {
+
+  justify-content: center;
+}
+/* potential mobile styling
+.container {
+  display: flex;
+
+  justify-content: center;
+} */
+
+.list-header {
+  background-color: #888;
+}
+
 div.gameElement:nth-child(even) {
   background: #CCC;
 }
@@ -48,29 +63,36 @@ div.gameElement:nth-child(odd) {
 }
 
 .element-image {
-  /* height: 12em; */
-  height: auto;
-  width: 12em;
+  /* height: auto; */
+  max-width: 300px;
   display: inline-block;
+  padding: 0%;
+  width: 5em;
+  height: auto;
+}
+
+.element-image-title {
+  height: auto;
+  max-width: 300px;
+  display: inline-flex;
+  padding-left: 0%;
+  justify-content: center;
 }
 
 .element-title {
-  display: inline-block;
+  display: inline-flex;
   justify-content: center;
   max-width: 250px;
   margin-left: 100px;
+  align-items: center;
 }
 
 .element-release-date {
-  display: inline-block;
+  display: inline-flex;
   justify-content: center;
   max-width: 250px;
   margin-left: 100px;
-}
-
-.element-year {
-  display: inline-block;
-  color: blue;
+  align-items: center;
 }
 
 footer {

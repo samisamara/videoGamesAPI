@@ -4,9 +4,6 @@ const app = express();
 const apicalypse = require("apicalypse")
 const axios = require("axios");
 
-// connect to database
-const dbURI = "";
-
 // igdb.com auth tokens
 const client_id = "lxfuzmuilua8gb13ipcikeg8i65ou6";
 const client_secret = "lt1lt769d03a4cyh7ta43ovu5zuin8";
@@ -15,9 +12,6 @@ const access_token = "kaudhxpfacfryczrbsp95s15uaqbe0";
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-
-// base URL
-const baseURL = "https://api.igdb.com/v4"
 
 
 // register view engine
@@ -36,7 +30,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const searchterm = req.body.searchTerm;
-  console.log("We searched for: " + searchterm);
+  // console.log("We searched for: " + searchterm);
   const releaseDates = [];
   axios({
     url: 'https://api.igdb.com/v4/games',
@@ -52,13 +46,9 @@ app.post('/', (req, res) => {
       const collections = response.data;
       collections.forEach(collection => {
         collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
-        console.log(collection.name);
         const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
         releaseDates.push(releaseDate);
-        console.log(releaseDate)
-        console.log(collection.release_dates?.[0]?.human);
       });
-      // console.log(releaseDates)
         
       res.render('index', { title: "Home", searchterm, games: collections, releaseDates })
     })

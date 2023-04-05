@@ -12,15 +12,21 @@
     </div>
 
     <% if (games.length > 0) { %>
-      <% games.forEach(game => { %>
-        <div class="gameElement" id="<%= game.id %>">
-          <img src="<%=game.cover.url%>" alt="game" class="element-image">
-          <h3 class="element-title"><%= game.name %></h3>
-          <h4 class="element-release-date"><%= releaseDates[0].human %></h4>
-          <% releaseDates.shift() %>
+      <div class="container">
+        <div class="list-header row">
+          <h3 class="element-image-title col-sm">Cover Art</h3>
+          <h3 class="element-title col-sm">Name</h3>
+          <h3 class="element-release-date col-sm">Release Date</h3>
         </div>
-
-      <% }) %>
+        <% games.forEach(game => { %>
+          <div class="gameElement row" id="<%= game.id %>">
+            <img src="<%=game.cover.url%>" alt="game" class="element-image col-sm">
+            <h3 class="element-title col-sm"><%= game.name %></h3>
+            <h4 class="element-release-date col-sm"><%= releaseDates[0].human %></h4>
+            <% releaseDates.shift() %>
+          </div>
+        <% }) %>
+      </div>
     <% } else { %>
       <p>No games found</p>
     <% } %>
