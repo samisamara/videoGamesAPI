@@ -17,34 +17,6 @@
   text-align: center;
 }
 
-.game-title {
-  padding: 10px;
-  text-align: center;
-}
-
-.game-box-art {
-  max-width: 70%;
-  height: auto;
-  float: right;
-  padding-right: 10px;
-}
-
-.game-description {
-  float: left;
-  padding-left: 10px;
-  text-align: left;
-}
-
-.info-piece {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.container {
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
 /* potential mobile styling
 .container {
   display: flex;
@@ -119,4 +91,121 @@ div.gameElement:nth-child(odd) {
 
 footer {
   text-align: center;
+}
+
+/* gameDetails styling */
+
+.game-title {
+  padding: 10px;
+  text-align: center;
+}
+
+.game-box-art {
+  max-width: 70%;
+  height: auto;
+  float: right;
+  padding-right: 10px;
+}
+
+.game-description {
+  float: left;
+  padding-left: 10px;
+  text-align: left;
+  margin-right: 100px;
+  padding-right: 10px;
+}
+
+.info-piece {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.art-image {
+  max-width: 300px;
+  max-height: fit-content;
+}
+
+.side-one {
+  float: right;
+}
+
+.slide-body {
+  min-height: 20vh;
+  display: grid;
+  place-items: center;
+}
+
+.slider {
+  height: 250px;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * 10);
+  animation: scroll 40s linear infinite;
+}
+
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
+}
+
+.slide {
+  height: 200px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  perspective: 100px;
+}
+
+.img-scroll {
+  width: 100%;
+  transition: transform 1s;
+}
+
+.img-scroll:hover {
+  transform: translateZ(20px);
+}
+
+/* gradient shadows */
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%, 
+  rgba(255,255,255,0) 100%);
+  content: '';
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider::after {
+  right: -1;
+  top: 0;
+  transform: rotateZ(180deg);
 }

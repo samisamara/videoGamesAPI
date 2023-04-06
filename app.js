@@ -18,11 +18,6 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.listen(3000);
 
-app.use((req, res, next) => {
-  // console.log('log thing');
-  next();
-});
-
 // routes
 app.get('/', (req, res) => {
   res.render('index', { title: "Home", games: "" });
@@ -49,10 +44,10 @@ app.post('/', (req, res) => {
         collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
         const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
         releaseDates.push(releaseDate);
-        const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found.'
+        const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
         companies.push(company);
       });
-      
+
       res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies })
     })
     .catch(err => {
@@ -67,6 +62,7 @@ app.get('/gameList', (req, res) => {
 // post handler
 
 app.get('/gameDetails', (req, res) => {
+
   res.render('gameDetails', { title: "Game Details" })
 });
 
