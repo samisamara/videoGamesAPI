@@ -33,10 +33,23 @@
   flex-wrap: nowrap;
 }
 
-div.gameElement:nth-child(even) {
+.anchor-styling {
+  text-decoration: none;
+  color: black;
+}
+
+.row {
+  margin: 0;
+}
+
+.list-elem:hover {
+  color: red;
+}
+
+div.list-elem:nth-child(even) {
   background: #CCC;
 }
-div.gameElement:nth-child(odd) { 
+div.list-elem:nth-child(odd) { 
   background: #EEE;
 }
 
@@ -156,8 +169,6 @@ footer {
   width: calc(250px * 10);
   animation: scroll 40s linear infinite;
 }
-
-
 
 @keyframes scroll {
   0% {

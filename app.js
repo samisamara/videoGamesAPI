@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const apicalypse = require("apicalypse")
 const axios = require("axios");
+const { render } = require('ejs');
 
 // igdb.com auth tokens
 const client_id = "lxfuzmuilua8gb13ipcikeg8i65ou6";
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const searchterm = req.body.searchTerm;
-  // console.log("We searched for: " + searchterm);
+  console.log("We searched for: " + searchterm);
   const releaseDates = [];
   const companies = [];
   axios({
@@ -36,7 +37,7 @@ app.post('/', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,summary,release_dates.human,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null;`
+    data: `fields id,name,summary,release_dates.human,cover.url,involved_companies.company.name,screenshots.url,artworks.url; search "${searchterm}"; limit 50; where cover.url != null;`
   })
     .then(response => {
       const collections = response.data;
@@ -46,6 +47,33 @@ app.post('/', (req, res) => {
         releaseDates.push(releaseDate);
         const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
         companies.push(company);
+
+
+
+        // console.log(collection.name)
+        // const screenshotNum = collection?.screenshots?.length ?? 0;
+        // // console.log(screenshotNum)
+        // if (collection?.screenshots?.length == undefined) {
+        //   // for (let i=0; i<collection.url.length; i++) {
+        //   //   console.log(collection?.screenshots[i].url)
+        //   // }
+        //   console.log('undef')
+        // } else { 
+        //   console.log(collection?.screenshots?.length)
+        // }
+
+        // console.log(collection.name)
+        // const artworkNum = collection?.artworks?.length ?? 0;
+        // // console.log(artworkNum)
+        // if (artworkNum > 0) {
+        //   for (let i=0; i<artworkNum; i++) {
+        //     console.log(collection?.artworks[i].url)
+        //   }
+        //   console.log(0)
+        // } else { 
+        //   console.log("none")
+        // }
+
       });
 
       res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies })
@@ -55,14 +83,30 @@ app.post('/', (req, res) => {
     });
 });
 
-app.get('/gameList', (req, res) => {
-  res.render('gameList', { title: "List of Games" })
+app.get('/gameDetails/:id', (req, res) => {
+  const game_id = req.params.id;
+  console.log('sup')
+  axios({
+    url: "https://api.igdb.com/v4/games",
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Client-ID': client_id,
+        'Authorization': `Bearer ${access_token}`,
+    },
+    data: `fields id,name,summary,release_dates.human,cover.url,involved_companies.company.name,screenshots.url,artworks.url; where id = ${game_id};`
+  })
+    .then(response => {
+      const game = response.data;
+      console.log(game)
+      render('gameDetails', { title: "Details", game })
+    })
+    .catch(err => {
+        console.error(err);
+    });
 });
 
-// post handler
-
 app.get('/gameDetails', (req, res) => {
-
   res.render('gameDetails', { title: "Game Details" })
 });
 
