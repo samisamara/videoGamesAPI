@@ -42,6 +42,10 @@
   margin: 0;
 }
 
+.form-styling {
+  margin: 0;
+}
+
 .list-elem:hover {
   color: red;
 }

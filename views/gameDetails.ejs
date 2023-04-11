@@ -3,37 +3,51 @@
 <body>
   <div class="container">
     <%- include('./partials/nav.ejs') %>
-    <h2 class="game-title">Sonic Frontiers</h2>
+    <h2 class="game-title"><%= game.name %></h2>
     <div class="game-info row align-items-start">
       <div class="col">
-        <img src="//images.igdb.com/igdb/image/upload/t_1080p/co1q9m.jpg" alt="kirby triple deluxe" class="game-box-art">
+        <img src="<%= game.cover.url %>" alt="kirby triple deluxe" class="game-box-art">
       </div>
       <div class="game-description col">
         <div class="info-piece">
           <h3>Game Summary</h3>
-          <p>Sonic Frontiers is the first open world Sonic the Hedgehog game. This story takes Sonic to the Starfall islands, where his friends are trapped in a digital cyber space, and he must save his friends and uncover the truth that took place thousands of years ago.</p>
+          <p><%= game.summary %></p>
         </div>
         <div class="info-piece side-one">
           <h3>Platforms</h3>
-          <p>Xbox Series X</p>
-          <p>PS5</p>
-          <p>Nintendo Switch</p>
-          <p>PC</p>
-          <p>3DS</p>
+          <% if (platformsLength != 0) { %>
+            <% for (let i=0; i<platformsLength; i++) { %>
+              <p><%= game.platforms[i].name %></p>
+            <% } %>
+          <% } else { %>
+            <p>None</p>
+          <% } %>
         </div>
         <div class="info-piece">
           <h3>Publisher(s)</h3>
-          <p>SEGA</p>
-          <p>Nintendo</p>
-          <p>Capcom</p>
+          <% if (publishersLength != 0) { %>
+            <% for (let i=0; i<publishersLength; i++) { %>
+              <p><%= game.involved_companies[i].company.name %></p>
+            <% } %>
+          <% } else { %>
+            <p>No Publishers Available</p>
+          <% } %>
         </div>
         <div class="info-piece">
           <h3>Release Date</h3>
-          <p>2022</p>
+          <% if (releaseDateLength != 0) { %>
+            <%= game.release_dates[0].human %>
+          <% } else { %>
+            <p>No Release Dates Found</p>
+          <% } %>
         </div>
         <div class="info-piece">
-          <h3>Ratings</h3>
-          <p>9/10</p>
+          <h3>Average Ratings</h3>
+          <% if (ratingCheck != 'none') { %>
+            <p><%= game.rating %>/100</p>
+          <% } else { %>
+            <p>No Ratings Available</p>
+          <% } %>
         </div>
       </div>
     </div>
@@ -134,6 +148,8 @@
 
     <%- include('./partials/footer.ejs') %>
   </div>
-
+  <script>
+    console.log("this is a test for game details")
+  </script>
 </body>
 </html>

@@ -37,43 +37,17 @@ app.post('/', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,summary,release_dates.human,cover.url,involved_companies.company.name,screenshots.url,artworks.url; search "${searchterm}"; limit 50; where cover.url != null;`
+    data: `fields id,name,release_dates.human,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null;`
   })
     .then(response => {
       const collections = response.data;
       collections.forEach(collection => {
         collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
+        // optional chaining and nullish coalescing operator
         const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
         releaseDates.push(releaseDate);
         const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
         companies.push(company);
-
-
-
-        // console.log(collection.name)
-        // const screenshotNum = collection?.screenshots?.length ?? 0;
-        // // console.log(screenshotNum)
-        // if (collection?.screenshots?.length == undefined) {
-        //   // for (let i=0; i<collection.url.length; i++) {
-        //   //   console.log(collection?.screenshots[i].url)
-        //   // }
-        //   console.log('undef')
-        // } else { 
-        //   console.log(collection?.screenshots?.length)
-        // }
-
-        // console.log(collection.name)
-        // const artworkNum = collection?.artworks?.length ?? 0;
-        // // console.log(artworkNum)
-        // if (artworkNum > 0) {
-        //   for (let i=0; i<artworkNum; i++) {
-        //     console.log(collection?.artworks[i].url)
-        //   }
-        //   console.log(0)
-        // } else { 
-        //   console.log("none")
-        // }
-
       });
 
       res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies })
@@ -83,9 +57,8 @@ app.post('/', (req, res) => {
     });
 });
 
-app.get('/gameDetails/:id', (req, res) => {
+app.post('/gameDetails/:id', (req, res) => {
   const game_id = req.params.id;
-  console.log('sup')
   axios({
     url: "https://api.igdb.com/v4/games",
     method: 'POST',
@@ -94,20 +67,32 @@ app.get('/gameDetails/:id', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,summary,release_dates.human,cover.url,involved_companies.company.name,screenshots.url,artworks.url; where id = ${game_id};`
+    data: `fields id,name,summary,platforms.name,rating,release_dates.human,cover.url,involved_companies.company.name,screenshots.url,artworks.url; where id = ${game_id};`
   })
     .then(response => {
-      const game = response.data;
-      console.log(game)
-      render('gameDetails', { title: "Details", game })
+      const game = response.data[0];
+      console.log(game.name);
+      // check if ratings exists
+      const ratingCheck = game?.rating ?? 'none';
+      if (ratingCheck != 'none') {
+        game.rating = game.rating.toFixed(1);
+      };
+      // change cover url to use the 1080p version
+      game.cover.url = game.cover.url.replace('t_thumb', 't_1080p');
+      // check if there are any platforms available
+      const platformsLength = game.platforms?.length ?? 0;
+      // check if there are any publishers available
+      const publishersLength = game.involved_companies?.length ?? 0;
+      // check if there are any release dates available
+      const releaseDateLength = game.release_dates?.length ?? 0;
+      
+
+
+      res.render('gameDetails', { title: "Details", game, ratingCheck, platformsLength, publishersLength, releaseDateLength });
     })
     .catch(err => {
         console.error(err);
     });
-});
-
-app.get('/gameDetails', (req, res) => {
-  res.render('gameDetails', { title: "Game Details" })
 });
 
 app.use((req, res) => {

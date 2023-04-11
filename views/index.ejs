@@ -21,7 +21,7 @@
         </div>
         <% games.forEach(game => { %>
           <div class="list-elem">
-            <a href="/gameDetails/<%=game.id%>" class="anchor-styling">
+            <form action="/gameDetails/<%= game.id %>" method="POST" class="form-styling" id="<%=game.id%>" onclick="sendForm(this)">
               <div class="gameElement row" id="<%= game.id %>">
                 <img src="<%=game.cover.url%>" alt="game" class="element-image col-sm">
                 <h3 class="element-title col-sm"><%= game.name %></h3>
@@ -30,10 +30,8 @@
                 <h4 class="element-company col sm"><%= companies[0] %></h4>
                 <% companies.shift() %>
               </div>
-            </a>
+            </form>
           </div>
-
-
         <% }) %>
       </div>
     <% } else { %>
@@ -44,5 +42,8 @@
 
 
   <%- include('./partials/footer.ejs') %>
+  <script>
+    const sendForm = (e) => e.submit();
+  </script>
 </body>
 </html>
