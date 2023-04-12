@@ -37,7 +37,7 @@ app.post('/', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,release_dates.human,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null;`
+    data: `fields id,name,release_dates.human,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null; where rating != null;`
   })
     .then(response => {
       const collections = response.data;
@@ -85,10 +85,30 @@ app.post('/gameDetails/:id', (req, res) => {
       const publishersLength = game.involved_companies?.length ?? 0;
       // check if there are any release dates available
       const releaseDateLength = game.release_dates?.length ?? 0;
-      
+      // check if there are any available screenshots
+      const screenshotsLength = game.screenshots?.length ?? 0;
+      console.log("screenshots " + screenshotsLength);
+      // check if there are any available artworks
+      const artworksLength = game.artworks?.length ?? 0;
+      console.log("artworks " + artworksLength);
+
+      // if (screenshotsLength > 0) {
+      //   game.screenshots.forEach(screenshot => {
+      //     game.screenshots.url = game.screenshots.url.replace('t_thumb', 't_1080p');
+      //   });
+      // }
+
+      for (let i=0; i<screenshotsLength; i++) {
+        game.screenshots[i].url = game.screenshots[i].url.replace('t_thumb', 't_1080p');
+      }
+
+      for (let i=0; i<artworksLength; i++) {
+        game.artworks[i].url = game.artworks[i].url.replace('t_thumb', 't_1080p');
+      }
 
 
-      res.render('gameDetails', { title: "Details", game, ratingCheck, platformsLength, publishersLength, releaseDateLength });
+
+      res.render('gameDetails', { title: "Details", game, ratingCheck, platformsLength, publishersLength, releaseDateLength, screenshotsLength, artworksLength });
     })
     .catch(err => {
         console.error(err);

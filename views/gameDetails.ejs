@@ -53,6 +53,50 @@
       </div>
     </div>
 
+    <% if (screenshotsLength > 0) { %>
+      <div class="slide-body">
+        <div class="slider">
+          <div class="slide-track">
+            <% for (let i=0; i<screenshotsLength; i++) { %>
+            <div class="slide">
+              <a href="<%= game.screenshots[i].url %>" target="_blank"><img src="<%= game.screenshots[i].url %>" alt="screenshot" class="img-scroll"></a>
+            </div>
+            <% } %>
+            <!-- same slides doubled -->
+            <% for (let i=0; i<screenshotsLength; i++) { %>
+            <div class="slide">
+              <a href="<%= game.screenshots[i].url %>" target="_blank"><img src="<%= game.screenshots[i].url %>" alt="screenshot" class="img-scroll"></a>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+    <% if (artworksLength > 0) { %>
+      <div class="slide-body">
+        <div class="slider">
+          <div class="slide-track">
+            <% for (let i=0; i<artworksLength; i++) { %>
+            <div class="slide">
+              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="artwork" class="img-scroll"></a>
+            </div>
+            <% } %>
+            <!-- same slides doubled -->
+            <% for (let i=0; i<artworksLength; i++) { %>
+            <div class="slide">
+              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="artwork" class="img-scroll"></a>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+
+
+
+<!-- 
     <div class="slide-body">
       <div class="slider">
         <div class="slide-track">
@@ -71,7 +115,7 @@
           <div class="slide">
             <img src="/screenshot5.jpg" alt="screenshot5" class="img-scroll">
           </div>
-          <!-- same slides doubled -->
+
           <div class="slide">
             <img src="/screenshot1.jpg" alt="screenshot1" class="img-scroll">
           </div>
@@ -109,7 +153,7 @@
           <div class="slide">
             <img src="/artwork5.jpg" alt="artwork5" class="img-scroll">
           </div>
-          <!-- same slides doubled -->
+
           <div class="slide">
             <img src="/artwork1.jpg" alt="artwork1" class="img-scroll">
           </div>
@@ -127,26 +171,9 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- <div>
-      <h2>Screenshots</h2>
-      <img src="/screenshot1.jpg" alt="screenshot1" class="art-image">
-      <img src="/screenshot2.jpg" alt="screenshot2" class="art-image">
-      <img src="/screenshot3.jpg" alt="screenshot3" class="art-image">
-      <img src="/screenshot4.jpg" alt="screenshot4" class="art-image">
-      <img src="/screenshot5.jpg" alt="screenshot5" class="art-image">
     </div> -->
 
-    <!-- <div>
-      <h2>Artwork</h2>
-      <img src="/artwork1.jpg" alt="artwork1" class="art-image">
-      <img src="/artwork2.jpg" alt="artwork2" class="art-image">
-      <img src="/artwork3.jpg" alt="artwork3" class="art-image">
-      <img src="/artwork4.jpg" alt="artwork4" class="art-image">
-      <img src="/artwork5.jpg" alt="artwork5" class="art-image">
-    </div> -->
-
+    
     <%- include('./partials/footer.ejs') %>
   </div>
   <script>
