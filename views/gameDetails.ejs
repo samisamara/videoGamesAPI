@@ -54,7 +54,7 @@
     </div>
 
     <% if (screenshotsLength > 0) { %>
-      <div class="slide-body">
+      <div class="slide-body" style="--number: <%= screenshotsLength %> ">
         <div class="slider">
           <div class="slide-track">
             <% for (let i=0; i<screenshotsLength; i++) { %>
@@ -74,18 +74,18 @@
     <% } %>
 
     <% if (artworksLength > 0) { %>
-      <div class="slide-body">
+      <div class="slide-body" style="--number2: <%= artworksLength %> ">
         <div class="slider">
-          <div class="slide-track">
+          <div class="slide-track2">
             <% for (let i=0; i<artworksLength; i++) { %>
-            <div class="slide">
-              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="artwork" class="img-scroll"></a>
+            <div class="slide2">
+              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="screenshot" class="img-scroll"></a>
             </div>
             <% } %>
             <!-- same slides doubled -->
             <% for (let i=0; i<artworksLength; i++) { %>
             <div class="slide">
-              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="artwork" class="img-scroll"></a>
+              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="artworks" class="img-scroll"></a>
             </div>
             <% } %>
           </div>
@@ -93,85 +93,6 @@
       </div>
     <% } %>
 
-
-
-
-<!-- 
-    <div class="slide-body">
-      <div class="slider">
-        <div class="slide-track">
-          <div class="slide">
-            <img src="/screenshot1.jpg" alt="screenshot1" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot2.jpg" alt="screenshot2" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot3.jpg" alt="screenshot3" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot4.jpg" alt="screenshot4" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot5.jpg" alt="screenshot5" class="img-scroll">
-          </div>
-
-          <div class="slide">
-            <img src="/screenshot1.jpg" alt="screenshot1" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot2.jpg" alt="screenshot2" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot3.jpg" alt="screenshot3" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot4.jpg" alt="screenshot4" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/screenshot5.jpg" alt="screenshot5" class="img-scroll">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="slide-body">
-      <div class="slider">
-        <div class="slide-track">
-          <div class="slide">
-            <img src="/artwork1.jpg" alt="artwork1" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork2.jpg" alt="artwork2" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork3.jpg" alt="artwork3" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork4.jpg" alt="artwork4" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork5.jpg" alt="artwork5" class="img-scroll">
-          </div>
-
-          <div class="slide">
-            <img src="/artwork1.jpg" alt="artwork1" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork2.jpg" alt="artwork2" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork3.jpg" alt="artwork3" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork4.jpg" alt="artwork4" class="img-scroll">
-          </div>
-          <div class="slide">
-            <img src="/artwork5.jpg" alt="artwork5" class="img-scroll">
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     
     <%- include('./partials/footer.ejs') %>
