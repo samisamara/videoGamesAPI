@@ -261,7 +261,7 @@ footer {
 }
 
 .slide-body {
-  min-height: 30vh;
+  min-height: 25vh;
   display: grid;
   place-items: center;
 }
@@ -369,4 +369,47 @@ footer {
   right: -1;
   top: 0;
   transform: rotateZ(180deg);
+}
+
+/* When list of artworks/screenshots < 6 */
+
+/* .small-list {
+  max-width: 100%;
+  margin: auto;
+}
+
+.image-styling {
+  height: 200px;
+  width: 250px;
+  margin: auto;
+  display: block;
+  align-items: center;
+  padding: 15px;
+  perspective: 100px;
+  transition: .2s;
+} */
+
+.small-list-positioning {
+  margin: auto;
+}
+
+.small-list {
+  min-height: 30vh;
+  position: relative;
+  display: inline-flex;
+  place-items: center;
+  justify-content: space-around;
+}
+
+.image-styling {
+  height: 200px;
+  width: 250px;
+  padding: 15px;
+  perspective: 100px;
+  transition: .2s;
+}
+
+.image-styling:hover {
+  transform: scale(1.1);
+  transition: .2s;
 }

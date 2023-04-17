@@ -1,5 +1,6 @@
 const { application, response } = require('express');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const apicalypse = require("apicalypse")
 const axios = require("axios");
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // register view engine
 app.set('view engine', 'ejs');
 app.listen(3000);
+app.use(cors())
 
 // routes
 app.get('/', (req, res) => {
