@@ -60,22 +60,30 @@
             <div class="slide-track">
               <% for (let i=0; i<screenshotsLength; i++) { %>
               <div class="slide">
-                <a href="<%= game.screenshots[i].url %>" target="_blank"><img src="<%= game.screenshots[i].url %>" alt="screenshot" class="img-scroll"></a>
+                <a href="<%= game.screenshots[i].url %>" target="_blank" class="img-grow"><img src="<%= game.screenshots[i].url %>" alt="screenshot" class="img-scroll"></a>
               </div>
               <% } %>
               <!-- same slides doubled -->
               <% for (let i=0; i<screenshotsLength; i++) { %>
               <div class="slide">
-                <a href="<%= game.screenshots[i].url %>" target="_blank"><img src="<%= game.screenshots[i].url %>" alt="screenshot" class="img-scroll"></a>
+                <a href="<%= game.screenshots[i].url %>" target="_blank" class="img-grow"><img src="<%= game.screenshots[i].url %>" alt="screenshot" class="img-scroll"></a>
               </div>
               <% } %>
             </div>
           </div>
         </div>
+        <% } else { %>
+          <div class="small-list-positioning">
+            <div class="small-list">
+              <% for (let i=0; i<screenshotsLength; i++) { %>
+                <a href="<%= game.screenshots[i].url %>" target="_blank"><img src="<%= game.screenshots[i].url %>" alt="screenshots" class="image-styling"></a>
+              <% } %>
+            </div>
+          </div>
+        <% } %>
       <% } else { %>
-        <h1>Less than 6 screenshots</h1>
+        <h3>No screenshots found</h3>
       <% } %>
-    <% } %>
 
     <% if (artworksLength > 0) { %>
       <% if (artworksLength > 6) { %>
@@ -84,13 +92,13 @@
             <div class="slide-track2">
               <% for (let i=0; i<artworksLength; i++) { %>
               <div class="slide2">
-                <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="screenshot" class="img-scroll"></a>
+                <a href="<%= game.artworks[i].url %>" target="_blank" class="img-grow"><img src="<%= game.artworks[i].url %>" alt="screenshot" class="img-scroll"></a>
               </div>
               <% } %>
               <!-- same slides doubled -->
               <% for (let i=0; i<artworksLength; i++) { %>
               <div class="slide">
-                <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="artworks" class="img-scroll"></a>
+                <a href="<%= game.artworks[i].url %>" target="_blank" class="img-grow"><img src="<%= game.artworks[i].url %>" alt="artworks" class="img-scroll"></a>
               </div>
               <% } %>
             </div>
@@ -100,17 +108,13 @@
         <div class="small-list-positioning">
           <div class="small-list">
             <% for (let i=0; i<artworksLength; i++) { %>
-              <div class="image-styling">
-                <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="screenshot" class="img-scroll"></a>
-              </div>
+              <a href="<%= game.artworks[i].url %>" target="_blank"><img src="<%= game.artworks[i].url %>" alt="screenshot" class="image-styling"></a>
             <% } %>
           </div>
         </div>
-
-
-
-
       <% } %>
+    <% } else { %>
+      <h3>No artworks found</h3>
     <% } %>
 
 

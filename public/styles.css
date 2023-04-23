@@ -347,6 +347,14 @@ footer {
   transform: translateZ(20px);
 }
 
+.img-grow {
+  transition: .2s;
+}
+
+.img-grow:hover {
+  scale: 1.1;
+}
+
 /* gradient shadows */
 
 .slider::before,
@@ -373,23 +381,12 @@ footer {
 
 /* When list of artworks/screenshots < 6 */
 
-/* .small-list {
-  max-width: 100%;
-  margin: auto;
-}
-
-.image-styling {
-  height: 200px;
-  width: 250px;
-  margin: auto;
-  display: block;
-  align-items: center;
-  padding: 15px;
-  perspective: 100px;
-  transition: .2s;
-} */
-
 .small-list-positioning {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin: auto;
 }
 
@@ -399,14 +396,16 @@ footer {
   display: inline-flex;
   place-items: center;
   justify-content: space-around;
+  align-items: center;
 }
 
 .image-styling {
-  height: 200px;
-  width: 250px;
+  height: 250px;
+  max-width: 250px;
   padding: 15px;
   perspective: 100px;
   transition: .2s;
+  object-fit: cover;
 }
 
 .image-styling:hover {

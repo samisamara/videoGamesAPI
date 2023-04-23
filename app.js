@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const searchterm = req.body.searchTerm;
-  console.log("We searched for: " + searchterm);
   const releaseDates = [];
   const companies = [];
   axios({
@@ -73,7 +72,6 @@ app.post('/gameDetails/:id', (req, res) => {
   })
     .then(response => {
       const game = response.data[0];
-      console.log(game.name);
       // check if ratings exists
       const ratingCheck = game?.rating ?? 'none';
       if (ratingCheck != 'none') {
@@ -89,16 +87,8 @@ app.post('/gameDetails/:id', (req, res) => {
       const releaseDateLength = game.release_dates?.length ?? 0;
       // check if there are any available screenshots
       const screenshotsLength = game.screenshots?.length ?? 0;
-      console.log("screenshots " + screenshotsLength);
       // check if there are any available artworks
       const artworksLength = game.artworks?.length ?? 0;
-      console.log("artworks " + artworksLength);
-
-      // if (screenshotsLength > 0) {
-      //   game.screenshots.forEach(screenshot => {
-      //     game.screenshots.url = game.screenshots.url.replace('t_thumb', 't_1080p');
-      //   });
-      // }
 
       for (let i=0; i<screenshotsLength; i++) {
         game.screenshots[i].url = game.screenshots[i].url.replace('t_thumb', 't_1080p');
