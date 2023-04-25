@@ -395,17 +395,20 @@ footer {
   position: relative;
   display: inline-flex;
   place-items: center;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .image-styling {
-  height: 250px;
+  max-height: 250px;
   max-width: 250px;
   padding: 15px;
   perspective: 100px;
   transition: .2s;
   object-fit: cover;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
 }
 
 .image-styling:hover {
