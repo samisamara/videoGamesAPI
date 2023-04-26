@@ -51,7 +51,7 @@ app.post('/', (req, res) => {
         companies.push(company);
       });
 
-      res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies })
+      res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies });
     })
     .catch(err => {
       console.error(err);
