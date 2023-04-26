@@ -42,14 +42,16 @@ app.post('/', (req, res) => {
   })
     .then(response => {
       const collections = response.data;
-      collections.forEach(collection => {
-        collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
-        // optional chaining and nullish coalescing operator
-        const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
-        releaseDates.push(releaseDate);
-        const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
-        companies.push(company);
-      });
+        collections.forEach(collection => {
+          collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
+          // optional chaining and nullish coalescing operator
+          const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
+          releaseDates.push(releaseDate);
+          const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
+          companies.push(company);
+        });
+
+        
 
       res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies });
     })
