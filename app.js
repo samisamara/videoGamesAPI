@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // register view engine
 app.set('view engine', 'ejs');
 app.listen(3000);
-app.use(cors())
+app.use(cors());
 
 // routes
 app.get('/', (req, res) => {
