@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
         'Client-ID': client_id,
         'Authorization': `Bearer ${access_token}`,
     },
-    data: `fields id,name,release_dates.human,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null; where rating != null;`
+    data: `fields id,name,release_dates.human,cover.url,involved_companies.company.name; search "${searchterm}"; limit 50; where cover.url != null & rating != null;`
   })
     .then(response => {
       const collections = response.data;
