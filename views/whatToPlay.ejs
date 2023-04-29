@@ -8,7 +8,77 @@
   <div class="content">
     <%- include('./partials/nav.ejs') %>
   
-    <h1>Coming Soon</h1>
+    <div class="wrapper">
+      <form action="/whatToPlay" method="POST">
+        <div class="formPart">
+          <h3>Genre</h3>
+          <input type="radio" value="Platform" id="Platform">
+          <label for="Platform">Platformer</label>
+
+          <input type="radio" value="Adventure" id="Adventure">
+          <label for="Adventure">Adventure</label>
+
+          <input type="radio" value="Hack and slash/Beat 'em up" id="Hack and slash/Beat 'em up">
+          <label for="Hack and slash/Beat 'em up">Hack and slash/Beat 'em up</label>
+
+          <!-- <input type="radio" value="Fighting" id="Fighting">
+          <label for="Fighting">Fighting</label>
+
+          <input type="radio" value="Indie" id="Indie">
+          <label for="Indie">Indie</label>
+
+          <input type="radio" value="Puzzle" id="Puzzle">
+          <label for="Puzzle">Puzzle</label>
+
+          <input type="radio" value="Role-playing (RPG)" id="Role-playing (RPG)">
+          <label for="Role-playing (RPG)">Role-playing (RPG)</label>
+
+          <input type="radio" value="Shooter" id="Shooter">
+          <label for="Shooter">Shooter</label>
+
+          <input type="radio" value="Racing" id="Racing">
+          <label for="Racing">Racing</label>
+
+          <input type="radio" value="Simulator" id="Simulator">
+          <label for="Simulator">Simulator</label>
+
+          <input type="radio" value="MMO" id="MMO">
+          <label for="MMO">MMO</label>
+
+          <input type="radio" value="Sport" id="Sport">
+          <label for="Sport">Sport</label>
+
+          <input type="radio" value="Strategy" id="Strategy">
+          <label for="Strategy">Strategy</label>
+
+          <input type="radio" value="Turn-based strategy (TBS)" id="Turn-based strategy (TBS)">
+          <label for="Turn-based strategy (TBS)">Turn-based strategy (TBS)</label>
+
+          <input type="radio" value="Arcade" id="Arcade">
+          <label for="Arcade">Arcade</label> -->
+
+          <input type="radio" value="Doesn't matter" id="Doesn't matter">
+          <label for="Doesn't matter">Doesn't matter</label>
+        </div>
+        <div class="formPart">
+          <h3>How Old</h3>
+          <input type="radio" value="Recent" id="Recent">
+          <label for="Recent">Recent (within the past year)</label>
+          <input type="radio" value="Somewhat recent" id="Somewhat recent">
+          <label for="Somewhat recent">Somewhat recent (within the past 1-3 years)</label>
+          <input type="radio" value="Older" id="Older">
+          <label for="Older">Older (3+ years)</label>
+          <input type="radio" value="Doesn't matter" id="Doesn't matter">
+          <label for="Doesn't matter">Doesn't matter</label>
+        </div>
+        <div class="formPart">
+          <h3>Platforms</h3>
+          <input type="radio" value="Doesn't matter" id="Doesn't matter">
+          <label for="Doesn't matter">Doesn't matter</label>
+        </div>
+        <button>Find a Game!</button>
+      </form>
+    </div>
 
 
   </div>
