@@ -111,7 +111,17 @@ app.post('/gameDetails/:id', (req, res) => {
 
 app.get('/whatToPlay', (req, res) => {
   res.render('whatToPlay', { title: "What To Play" });
-})
+});
+
+app.post('/whatToPlay', (req, res) => {
+  console.log(req.body);
+
+  const currentDate = Date();
+  console.log(currentDate)
+
+
+  res.render('whatToPlay', { title: "What To Play" });
+});
 
 app.use((req, res) => {
   res.status(404).render('404', { title: "404" })
