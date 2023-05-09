@@ -1,0 +1,48 @@
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+
+<body class="body-styling">
+  <div class="content">
+    <%- include('./partials/nav.ejs') %>
+
+    <h2>Results:</h2>
+    <% if (games.length > 0) { %>
+      <div class="container">
+        <div class="list-header row">
+          <h3 class="element-image-title col-sm">Cover Art</h3>
+          <h3 class="element-title col-sm">Name</h3>
+          <h3 class="element-release-date col-sm">Release Date</h3>
+          <h3 class="element-release-date col-sm">Publisher</h3>
+        </div>
+        <% games.forEach(game => { %>
+          <div class="list-elem">
+            <form action="/gameDetails/<%= game.id %>" method="POST" class="form-styling" id="<%=game.id%>" onclick="sendForm(this)">
+              <div class="gameElement row" id="<%= game.id %>">
+                <img src="<%=game.cover.url%>" alt="game" class="element-image col-sm">
+                <h3 class="element-title col-sm"><%= game.name %></h3>
+                <h4 class="element-release-date col-sm"><%= releaseDates[0].human %></h4>
+                <% releaseDates.shift() %>
+                <h4 class="element-company col sm"><%= companies[0] %></h4>
+                <% companies.shift() %>
+              </div>
+            </form>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <h3>No Games Found</h3>
+    <% } %>
+
+
+  </div>
+
+
+  <%- include('./partials/footer.ejs') %>
+  <script>
+    const sendForm = e => e.submit();
+  </script>
+</body>
+</html>

@@ -14,90 +14,90 @@
       <form action="/whatToPlay" method="POST" class="whatToPlayCSS">
 
         <!-- Genre Options -->
-        <div class="formPart">
+        <div class="formPart checkgroup1">
           <h3 class="form-header">Genre</h3>
           <div>
-            <input type="checkbox" value="8" id="8" name="genreOption">
+            <input type="checkbox" value="8" id="8" name="genreOption" class="genreOption">
             <label for="8">Platformer</label>
           </div>
           
           <div>
-            <input type="checkbox" value="31" id="31" name="genreOption">
+            <input type="checkbox" value="31" id="31" name="genreOption" class="genreOption">
             <label for="31">Adventure</label>
           </div>
 
           <div>
-            <input type="checkbox" value="25" id="25" name="genreOption">
+            <input type="checkbox" value="25" id="25" name="genreOption" class="genreOption">
             <label for="25">Hack and slash/Beat 'em up</label>
           </div>
 
           <div>
-            <input type="checkbox" value="4" id="4" name="genreOption">
+            <input type="checkbox" value="4" id="4" name="genreOption" class="genreOption">
             <label for="4">Fighting</label>
           </div>
 
           <div>
-            <input type="checkbox" value="32" id="32" name="genreOption">
+            <input type="checkbox" value="32" id="32" name="genreOption" class="genreOption">
             <label for="32">Indie</label>
           </div>
 
           <div>
-            <input type="checkbox" value="9" id="9" name="genreOption">
+            <input type="checkbox" value="9" id="9" name="genreOption" class="genreOption">
             <label for="9">Puzzle</label>
           </div>
 
           <div>
-            <input type="checkbox" value="12" id="12" name="genreOption">
+            <input type="checkbox" value="12" id="12" name="genreOption" class="genreOption">
             <label for="12">Role-playing (RPG)</label>
           </div>
 
           <div>
-            <input type="checkbox" value="5" id="5" name="genreOption">
+            <input type="checkbox" value="5" id="5" name="genreOption" class="genreOption">
             <label for="5">Shooter</label>
           </div>
 
           <div>
-            <input type="checkbox" value="10" id="10" name="genreOption">
+            <input type="checkbox" value="10" id="10" name="genreOption" class="genreOption">
             <label for="10">Racing</label>
           </div>
 
           <div>
-            <input type="checkbox" value="13" id="13" name="genreOption">
+            <input type="checkbox" value="13" id="13" name="genreOption" class="genreOption">
             <label for="13">Simulator</label>
           </div>
 
           <div>
-            <input type="checkbox" value="14" id="14" name="genreOption">
+            <input type="checkbox" value="14" id="14" name="genreOption" class="genreOption">
             <label for="14">Sport</label>
           </div>
 
           <div>
-            <input type="checkbox" value="15" id="15" name="genreOption">
+            <input type="checkbox" value="15" id="15" name="genreOption" class="genreOption">
             <label for="15">Strategy</label>
           </div>
 
           <div>
-            <input type="checkbox" value="16" id="16" name="genreOption">
+            <input type="checkbox" value="16" id="16" name="genreOption" class="genreOption">
             <label for="16">Turn-based strategy (TBS)</label>
           </div>
 
           <div>
-            <input type="checkbox" value="33" id="33" name="genreOption">
+            <input type="checkbox" value="33" id="33" name="genreOption" class="genreOption">
             <label for="33">Arcade</label>
           </div>
 
           <div>
-            <input type="checkbox" value="34" id="34" name="genreOption">
+            <input type="checkbox" value="34" id="34" name="genreOption" class="genreOption">
             <label for="34">Visual Novel</label>
           </div>
 
           <div>
-            <input type="checkbox" value="35" id="35" name="genreOption">
+            <input type="checkbox" value="35" id="35" name="genreOption" class="genreOption">
             <label for="35">Card & Board Game</label>
           </div>
 
           <div>
-            <input type="checkbox" value="36" id="36" name="genreOption">
+            <input type="checkbox" value="36" id="36" name="genreOption" class="genreOption">
             <label for="36">MOBA</label>
           </div>
 
@@ -198,19 +198,19 @@
         <div class="formPart">
           <h3 class="form-header">How Old</h3>
           <div>
-            <input type="radio" value="inOneYear" id="inOneYear" name="ageOption">
+            <input type="radio" value="inOneYear" id="inOneYear" name="ageOption" required>
             <label for="inOneYear">Recent (>1 year)</label>
           </div>
           <div>
-            <input type="radio" value="inThreeYears" id="inThreeYears" name="ageOption">
+            <input type="radio" value="inThreeYears" id="inThreeYears" name="ageOption" required>
             <label for="inThreeYears">Somewhat recent (1-3 years)</label>
           </div>
           <div>
-            <input type="radio" value="older" id="older" name="ageOption">
+            <input type="radio" value="older" id="older" name="ageOption" required>
             <label for="older">Older (3+ years)</label>
           </div>
           <div>
-            <input type="radio" value="Doesn't matter" id="Doesn't matter" name="ageOption">
+            <input type="radio" value="Doesn't matter" id="Doesn't matter" name="ageOption" required>
             <label for="Doesn't matter">Doesn't matter</label>
           </div>
         </div>
@@ -223,5 +223,8 @@
 
 
   <%- include('./partials/footer.ejs') %>
+  <script>
+
+  </script>
 </body>
 </html>

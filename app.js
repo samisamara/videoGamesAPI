@@ -112,7 +112,6 @@ app.get('/whatToPlay', (req, res) => {
 
 app.post('/whatToPlay', (req, res) => {
   console.log(req.body);
-  // console.log(req.body)
 
   let currentDate = new Date();
   let parsedCurrent = currentDate.getTime();
@@ -149,8 +148,8 @@ app.post('/whatToPlay', (req, res) => {
   const genreOption = req.body.genreOption;
   const themeOption = req.body.themeOption;
 
-  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 1; where genres = [${genreOption}] & themes = [${themeOption}] & cover.url != null & ${ageSetting}`;
-  console.log(dataBody)
+  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 50; where genres = [${genreOption}] & themes = [${themeOption}] & cover.url != null & ${ageSetting}`;
+  console.log(dataBody);
 
   const releaseDates = [];
   const companies = [];
@@ -165,8 +164,6 @@ app.post('/whatToPlay', (req, res) => {
     data: dataBody
   })
     .then(response => {
-      console.log("reaches .then() method")
-      console.log(response.data)
       const collections = response.data;
         collections.forEach(collection => {
           collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
@@ -176,10 +173,10 @@ app.post('/whatToPlay', (req, res) => {
           const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
           companies.push(company);
         });
-      res.render('whatToPlay', { title: "What To Play", games: collections, releaseDates, companies });
+      res.render('listResults', { title: "What To Play - Results", games: collections, releaseDates, companies });
     })
     .catch(err => {
-      console.error("err");
+      console.error(err);
     });
 });
 
