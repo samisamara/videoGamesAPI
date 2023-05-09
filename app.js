@@ -50,9 +50,6 @@ app.post('/', (req, res) => {
           const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
           companies.push(company);
         });
-
-        
-
       res.render('index', { title: "Home", searchterm, games: collections, releaseDates, companies });
     })
     .catch(err => {
@@ -115,12 +112,75 @@ app.get('/whatToPlay', (req, res) => {
 
 app.post('/whatToPlay', (req, res) => {
   console.log(req.body);
+  // console.log(req.body)
 
-  const currentDate = Date();
-  console.log(currentDate)
+  let currentDate = new Date();
+  let parsedCurrent = currentDate.getTime();
+  let tester = new Date(1610132229000);
+  tester = tester/1000;
 
+  // finds the exact date/time from 1 year ago and 3 years ago
+  let oneYearAgo = Math.round((parsedCurrent - 31556952000)/1000);
+  let threeYearsAgo = Math.round((parsedCurrent - 94670856000)/1000);
 
-  res.render('whatToPlay', { title: "What To Play" });
+  // finds selected choice for age setting and constructs a piece of the request based on the chosen option
+  let ageSetting = `first_release_date != null`
+  if (req.body.ageOption == "inOneYear") {
+    ageSetting = ageSetting + ` & first_release_date > ${oneYearAgo} & first_release_date > ${threeYearsAgo};`
+  } else if (req.body.ageOption == "inThreeYears") {
+    ageSetting = ageSetting + ` & first_release_date < ${oneYearAgo} & first_release_date > ${threeYearsAgo};`
+  } else if (req.body.ageOption == "older") {
+    ageSetting = ageSetting + ` & first_release_date < ${threeYearsAgo};`
+  } else {
+    ageSetting = ageSetting + `;`
+  }
+
+  // one year ago: 1652024642575
+  // three years ago: 1588910738575
+
+  // if (tester > oneYearAgo && tester > threeYearsAgo) {
+  //   console.log("within a year");
+  // } else if (tester < oneYearAgo && tester > threeYearsAgo) {
+  //   console.log("withtin 3 years");
+  // } else {
+  //   console.log("over 3 years ago");
+  // };
+
+  const genreOption = req.body.genreOption;
+  const themeOption = req.body.themeOption;
+
+  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 1; where genres = [${genreOption}] & themes = [${themeOption}] & cover.url != null & ${ageSetting}`;
+  console.log(dataBody)
+
+  const releaseDates = [];
+  const companies = [];
+  axios({
+    url: 'https://api.igdb.com/v4/games',
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Client-ID': client_id,
+        'Authorization': `Bearer ${access_token}`,
+    },
+    data: dataBody
+  })
+    .then(response => {
+      console.log("reaches .then() method")
+      console.log(response.data)
+      const collections = response.data;
+        collections.forEach(collection => {
+          collection.cover.url = collection.cover.url.replace('t_thumb', 't_1080p');
+          // optional chaining and nullish coalescing operator
+          const releaseDate = collection?.release_dates?.[0] ?? 'No release date.'
+          releaseDates.push(releaseDate);
+          const company = collection?.involved_companies?.[0].company.name ?? 'No Companies found'
+          companies.push(company);
+        });
+      res.render('whatToPlay', { title: "What To Play", games: collections, releaseDates, companies });
+    })
+    .catch(err => {
+      console.error("err");
+    });
 });
 
 app.use((req, res) => {
