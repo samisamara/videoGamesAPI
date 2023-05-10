@@ -12,9 +12,8 @@
 
       <!-- Form Beginning -->
       <form action="/whatToPlay" method="POST" class="whatToPlayCSS">
-
         <!-- Genre Options -->
-        <div class="formPart checkgroup1">
+        <div id="sectionGenre" class="formPart" required>
           <h3 class="form-header">Genre</h3>
           <div>
             <input type="checkbox" value="8" id="8" name="genreOption" class="genreOption">
@@ -102,100 +101,101 @@
           </div>
 
           <div>
-           <input type="checkbox" value="Doesn't matter" id="Doesn't matter" name="genreOption">
-            <label for="Doesn't matter">Doesn't matter</label> 
+           <input type="checkbox" value="none" id="none" name="genreOption" class="genreOption">
+            <label for="none">Doesn't matter</label> 
           </div>
+
         </div>
 
         <!-- Theme Options -->
-        <div class="formPart">
+        <div id="sectionTheme" class="formPart" required>
           <h3 class="form-header">Theme</h3>
           <div>
-            <input type="checkbox" value="1" id="1" name="themeOption">
+            <input type="checkbox" value="1" id="1" name="themeOption" class="themeOption">
             <label for="1">Action</label>
           </div>
           <div>
-            <input type="checkbox" value="17" id="17" name="themeOption">
+            <input type="checkbox" value="17" id="17" name="themeOption" class="themeOption">
             <label for="17">Fantasy</label>
           </div>
           <div>
-            <input type="checkbox" value="18" id="18" name="themeOption">
+            <input type="checkbox" value="18" id="18" name="themeOption" class="themeOption">
             <label for="18">Science Fiction</label>
           </div>
           <div>
-            <input type="checkbox" value="19" id="19" name="themeOption">
+            <input type="checkbox" value="19" id="19" name="themeOption" class="themeOption">
             <label for="19">Horror</label>
           </div>
           <div>
-            <input type="checkbox" value="20" id="20" name="themeOption">
+            <input type="checkbox" value="20" id="20" name="themeOption" class="themeOption">
             <label for="20">Thriller</label>
           </div>
           <div>
-            <input type="checkbox" value="21" id="21" name="themeOption">
+            <input type="checkbox" value="21" id="21" name="themeOption" class="themeOption">
             <label for="21">Survival</label>
           </div>
           <div>
-            <input type="checkbox" value="22" id="22" name="themeOption">
+            <input type="checkbox" value="22" id="22" name="themeOption" class="themeOption">
             <label for="22">Historical</label>
           </div>
           <div>
-            <input type="checkbox" value="23" id="23" name="themeOption">
+            <input type="checkbox" value="23" id="23" name="themeOption" class="themeOption">
             <label for="23">Stealth</label>
           </div>
           <div>
-            <input type="checkbox" value="27" id="27" name="themeOption">
+            <input type="checkbox" value="27" id="27" name="themeOption" class="themeOption">
             <label for="27">Comedy</label>
           </div>
           <div>
-            <input type="checkbox" value="28" id="28" name="themeOption">
+            <input type="checkbox" value="28" id="28" name="themeOption" class="themeOption">
             <label for="28">Business</label>
           </div>
           <div>
-            <input type="checkbox" value="31" id="31" name="themeOption">
+            <input type="checkbox" value="31" id="31" name="themeOption" class="themeOption">
             <label for="31">Drama</label>
           </div>
           <div>
-            <input type="checkbox" value="32" id="32" name="themeOption">
+            <input type="checkbox" value="32" id="32" name="themeOption" class="themeOption">
             <label for="32">Non-fiction</label>
           </div>
           <div>
-            <input type="checkbox" value="33" id="33" name="themeOption">
+            <input type="checkbox" value="33" id="33" name="themeOption" class="themeOption">
             <label for="33">Sandbox</label>
           </div>
           <div>
-            <input type="checkbox" value="34" id="34" name="themeOption">
+            <input type="checkbox" value="34" id="34" name="themeOption" class="themeOption">
             <label for="34">Educational</label>
           </div>
           <div>
-            <input type="checkbox" value="35" id="35" name="themeOption">
+            <input type="checkbox" value="35" id="35" name="themeOption" class="themeOption">
             <label for="35">Kids</label>
           </div>
           <div>
-            <input type="checkbox" value="38" id="38" name="themeOption">
+            <input type="checkbox" value="38" id="38" name="themeOption" class="themeOption">
             <label for="38">Open world</label>
           </div>
           <div>
-            <input type="checkbox" value="39" id="39" name="themeOption">
+            <input type="checkbox" value="39" id="39" name="themeOption" class="themeOption">
             <label for="39">Warfare</label>
           </div>
           <div>
-            <input type="checkbox" value="40" id="40" name="themeOption">
+            <input type="checkbox" value="40" id="40" name="themeOption" class="themeOption">
             <label for="40">Party</label>
           </div>
           <div>
-            <input type="checkbox" value="43" id="43" name="themeOption">
+            <input type="checkbox" value="43" id="43" name="themeOption" class="themeOption">
             <label for="43">Mystery</label>
           </div>
           <div>
-            <input type="checkbox" value="44" id="44" name="themeOption">
+            <input type="checkbox" value="44" id="44" name="themeOption" class="themeOption">
             <label for="44">Romance</label>
           </div>
           <div>
-            <input type="checkbox" value="Doesn't matter" id="Doesn't matter" name="themeOption">
-            <label for="Doesn't matter">Doesn't matter</label>
+            <input type="checkbox" value="none" id="none" name="themeOption" class="themeOption">
+            <label for="none">Doesn't matter</label>
           </div>
         </div>
-        <div class="formPart">
+        <div class="formPart" required>
           <h3 class="form-header">How Old</h3>
           <div>
             <input type="radio" value="inOneYear" id="inOneYear" name="ageOption" required>
@@ -217,14 +217,72 @@
         <button>Find a Game!</button>
       </form>
     </div>
-
-
   </div>
 
 
   <%- include('./partials/footer.ejs') %>
   <script>
+      (function() {
+        const genres = document.querySelector('#sectionGenre');
+        const checkboxes = genres.querySelectorAll('.genreOption');
+        const themes = document.querySelector('#sectionTheme');
+        const checkboxes2 = themes.querySelectorAll('.themeOption');
+        const checkboxLength = checkboxes.length;
+        const checkbox2Length = checkboxes2.length;
+        const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
+        const firstCheckbox2 = checkbox2Length > 0 ? checkboxes2[0] : null;
 
+        function init() {
+            if (firstCheckbox) {
+                for (let i = 0; i < checkboxLength; i++) {
+                    checkboxes[i].addEventListener('change', checkValidity);
+                }
+
+                checkValidity();
+            }
+        }
+
+        function isChecked() {
+            for (let i = 0; i < checkboxLength; i++) {
+                if (checkboxes[i].checked) return true;
+            }
+
+            return false;
+        }
+
+        function checkValidity() {
+            const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
+            firstCheckbox.setCustomValidity(errorMessage);
+        }
+
+        function init2() {
+          console.log("test")
+            if (firstCheckbox2) {
+              console.log("test")
+                for (let i = 0; i < checkbox2Length; i++) {
+                    checkboxes2[i].addEventListener('change', checkValidity2);
+                }
+
+                checkValidity2();
+            }
+        }
+
+        function isChecked2() {
+            for (let i = 0; i < checkbox2Length; i++) {
+                if (checkboxes2[i].checked) return true;
+            }
+
+            return false;
+        }
+
+        function checkValidity2() {
+            const errorMessage = !isChecked2() ? 'At least one checkbox must be selected.' : '';
+            firstCheckbox2.setCustomValidity(errorMessage);
+        }
+
+        init();
+        init2();
+      })();
   </script>
 </body>
 </html>

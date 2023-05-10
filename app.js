@@ -111,7 +111,6 @@ app.get('/whatToPlay', (req, res) => {
 });
 
 app.post('/whatToPlay', (req, res) => {
-  console.log(req.body);
 
   let currentDate = new Date();
   let parsedCurrent = currentDate.getTime();
@@ -134,22 +133,22 @@ app.post('/whatToPlay', (req, res) => {
     ageSetting = ageSetting + `;`
   }
 
-  // one year ago: 1652024642575
-  // three years ago: 1588910738575
+  let genreOption = req.body.genreOption;
+  let themeOption = req.body.themeOption;
 
-  // if (tester > oneYearAgo && tester > threeYearsAgo) {
-  //   console.log("within a year");
-  // } else if (tester < oneYearAgo && tester > threeYearsAgo) {
-  //   console.log("withtin 3 years");
-  // } else {
-  //   console.log("over 3 years ago");
-  // };
+  if ((genreOption.includes("none"))) {
+    genreOption = ``;
+  } else {
+    genreOption = ` & genres = [${genreOption}]`;
+  }
 
-  const genreOption = req.body.genreOption;
-  const themeOption = req.body.themeOption;
+  if ((themeOption.includes("none"))) {
+    themeOption = ``;
+  } else {
+    themeOption = ` & themes = [${themeOption}]`;
+  }
 
-  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 50; where genres = [${genreOption}] & themes = [${themeOption}] & cover.url != null & ${ageSetting}`;
-  console.log(dataBody);
+  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 50; where cover.url != null${genreOption}${themeOption} & ${ageSetting}`;
 
   const releaseDates = [];
   const companies = [];
@@ -181,5 +180,5 @@ app.post('/whatToPlay', (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).render('404', { title: "404" })
+  res.status(404).render('404', { title: "404" });
 });
