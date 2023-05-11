@@ -149,7 +149,7 @@ app.post('/whatToPlay', (req, res) => {
   }
 
   // construct body of API request
-  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 50; where cover.url != null${genreOption}${themeOption} & ${ageSetting}`;
+  const dataBody = `fields id, name, first_release_date, genres, genres.name, themes, themes.name, genres.name, release_dates.human,cover.url,involved_companies.company.name; limit 50; where rating != null & cover.url != null${genreOption}${themeOption} & ${ageSetting}`;
 
   const releaseDates = [];
   const companies = [];

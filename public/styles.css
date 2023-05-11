@@ -11,6 +11,10 @@
   margin: auto;
 }
 
+.flex-content {
+  flex: 1 0 auto;
+}
+
 .title, .title:hover, .title:visited, .title:active {
   /* font-family:'Courier New', Courier, monospace; */
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,10 +56,6 @@ nav h1{
 nav p, nav a{
   color: #777;
   font-weight: 300;
-}
-
-.search-bar {
-  text-align: center;
 }
 
 .searchbar {
@@ -108,13 +108,6 @@ nav p, nav a{
   cursor: pointer;
 }
 
-/* potential mobile styling
-.container {
-  display: flex;
-
-  justify-content: center;
-} */
-
 .list-header {
   background-color: #152238;
   display: flex;
@@ -158,6 +151,8 @@ div.list-elem:nth-child(odd) {
   padding-left: 0%;
   justify-content: center;
   margin: auto;
+  font-size: 1.5vw;
+  text-align: center;
 }
 
 .element-image {
@@ -176,6 +171,8 @@ div.list-elem:nth-child(odd) {
   max-width: 250px;
   align-items: center;
   margin: auto;
+  font-size: 1.5vw;
+  text-align: center;
 }
 
 .element-release-date {
@@ -185,16 +182,9 @@ div.list-elem:nth-child(odd) {
   max-width: 250px;
   align-items: center;
   margin: auto;
+  font-size: 1.5vw;
+  text-align: center;
 }
-
-/* .element-company {
-  font-family: 'poppins';
-  display: inline-flex;
-  justify-content: center;
-  max-width: 250px;
-  margin-left: 100px;
-  align-items: center;
-} */
 
 .element-company {
   font-family: 'poppins';
@@ -203,6 +193,8 @@ div.list-elem:nth-child(odd) {
   max-width: 250px;
   align-items: center;
   margin: auto;
+  font-size: 1.5vw;
+  text-align: center;
 }
 
 footer {
@@ -427,8 +419,9 @@ footer {
 /* form styling */
 
 .whatToPlayCSS {
-  padding: 10px;
-  border: #000 1px solid;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #1b222c;
 }
 
 .formPart {
@@ -436,9 +429,69 @@ footer {
   margin: auto;
   margin-bottom: 10px;
   padding: 15px;
-  border: #000 1px solid;
+  border-radius: 5px;
+  background-color: #202a3e;
 }
 
 .form-header {
   text-align: center;
+}
+
+.form-btn {
+  width: 90%;
+  margin: auto;
+  display: block;
+  background-color: #2a3955;
+  color: #ffffff;
+  padding: 5px;
+  border: 0;
+  border-radius: 3px;
+  transition: .1s;
+}
+
+.form-btn:hover {
+  background-color: #232f46;
+}
+
+.genreOption, .themeOption, .ageOption {
+  accent-color: #60818f;
+  /* accent-color: #485e7b; */
+}
+
+.form-list-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* tablet media query */
+@media only screen and (max-device-width: 1024px) {
+
+  .wrapper {
+    max-width: 100%;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .element-image-title, .element-title, .element-release-date, .element-company {
+    font-size: 1.7vw;
+  }
+
+  .formPart {
+    max-width: 100%;
+  }
+  
 }
