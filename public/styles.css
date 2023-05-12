@@ -34,7 +34,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   text-transform: uppercase;
@@ -478,6 +478,22 @@ body {
 /* tablet media query */
 @media only screen and (max-device-width: 1024px) {
 
+  .title, .title:hover, .title:visited, .title:active {
+  /* font-family:'Courier New', Courier, monospace; */
+  font-size: .7rem;
+}
+
+  nav {
+    padding-bottom: 0;
+  }
+
+  nav ul{
+    /* display: flex;
+    justify-content: space-between;
+    align-items: flex-end; */
+    padding: 10px 0 0 10px;
+  }
+
   .wrapper {
     max-width: 100%;
   }
@@ -493,5 +509,27 @@ body {
   .formPart {
     max-width: 100%;
   }
+
+  .list-header {
+    height: 40px;
+  }
   
+}
+
+@media only screen and (max-device-width: 575px) {
+  .content {
+    max-width: 100%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .nav-ul {
+    float: left;
+  }
+
+  .list-header {
+    display: none;
+  }
 }
