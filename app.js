@@ -8,9 +8,9 @@ const { render } = require('ejs');
 
 // igdb.com auth tokens
 const client_id = "lxfuzmuilua8gb13ipcikeg8i65ou6";
-const client_secret = "lt1lt769d03a4cyh7ta43ovu5zuin8";
+const client_secret = "idpprmd9whprpa5cbe7zji6yu7ci54";
 
-const access_token = "kaudhxpfacfryczrbsp95s15uaqbe0";
+const access_token = "1zn0ne9qk8v66dluybo429o3x8jl6f";
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
